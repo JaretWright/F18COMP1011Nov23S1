@@ -41,6 +41,13 @@ public class ComputerCollection {
         Collections.sort(arrayList, (a,b) -> (a.getPrice()>b.getPrice())?1:-1);
         System.out.println("\nArrayList after sorting with lambda and price:");
         displayList(arrayList);
+
+        //Find the average price for the Computer objects
+        arrayList.stream()
+                .mapToDouble(computer -> computer.getPrice())
+                .average()
+                .ifPresent(avg -> System.out.printf("The avg price for a computer is $%.2f",avg));
+
     }
 
     public static void displayList(List<Computer> list)
